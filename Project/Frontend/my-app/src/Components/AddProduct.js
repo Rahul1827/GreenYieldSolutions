@@ -4,11 +4,13 @@ import "./AddProduct.css";
 const AddProduct = () => {
   const [product, setProduct] = useState({
     name: "",
+    brand: "",
     description: "",
     price: "",
     image: "",
     quantity: 1,
   });
+
   const [imagePreview, setImagePreview] = useState(null); 
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem("products")) || []
@@ -22,7 +24,6 @@ const AddProduct = () => {
     }));
   };
 
- 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -41,7 +42,7 @@ const AddProduct = () => {
     const updatedProducts = [...products, product];
     setProducts(updatedProducts);
     localStorage.setItem("products", JSON.stringify(updatedProducts)); // Store products in localStorage
-    setProduct({ name: "", description: "", price: "", image: "", quantity: 1 }); 
+    setProduct({ name: "", brand: "", description: "", price: "", image: "", quantity: 1 }); // Reset product state
     setImagePreview(null); 
   };
 
@@ -66,15 +67,30 @@ const AddProduct = () => {
             onChange={handleChange}
             className="form-control"
           />
+        </div>
+
+        <div className="form-group">
           <input
             type="text"
-            name="description"
-            placeholder="Product Description"
-            value={product.description}
+            name="brand"
+            placeholder="Brand Name"
+            value={product.brand}
             onChange={handleChange}
             className="form-control"
           />
         </div>
+
+        <div className="form-group">
+          <textarea
+            name="description"
+            placeholder="Product Description"
+            value={product.description}
+            onChange={handleChange}
+            className="form-control description-textarea"
+            rows="4"
+          />
+        </div>
+
         <div className="form-group">
           <input
             type="number"
@@ -85,6 +101,7 @@ const AddProduct = () => {
             className="form-control"
           />
         </div>
+
         <div className="form-group">
           <input
             type="file"
@@ -93,11 +110,13 @@ const AddProduct = () => {
             className="form-control"
           />
         </div>
+
         {imagePreview && (
           <div className="image-preview">
             <img src={imagePreview} alt="Preview" className="image-preview-img" />
           </div>
         )}
+
         <div className="form-group">
           <input
             type="number"
@@ -108,6 +127,7 @@ const AddProduct = () => {
             className="form-control"
           />
         </div>
+
         <button type="submit" className="submit-button">
           Add Product
         </button>
@@ -121,6 +141,7 @@ const AddProduct = () => {
               <img src={item.image} alt={item.name} className="product-image" />
               <div className="product-info">
                 <h3 className="product-name">{item.name}</h3>
+                <p className="product-brand">Brand: {item.brand}</p> {/* Display Brand Name */}
                 <p className="product-description">{item.description}</p>
                 <p className="product-price">Price: ₹{item.price}</p>
                 <p className="product-quantity">Quantity: {item.quantity}</p>

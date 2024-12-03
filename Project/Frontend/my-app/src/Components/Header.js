@@ -38,7 +38,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/products">Products</Link>
                             </li>
-                            <li className="nav-item dropdown">
+                            {/* <li className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" to="/cropdetails" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Crop
                                 </Link>
@@ -49,7 +49,7 @@ export default function Header() {
                                     <li><Link className="dropdown-item" to="/">Gram</Link></li>
                                     <li><Link className="dropdown-item" to="/">Wheat</Link></li>
                                 </ul>
-                            </li>
+                            </li> */}
                             <li className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" to="/signinDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Sign-Up
@@ -98,3 +98,5 @@ export default function Header() {
         </div>
     );
 }
+
+
