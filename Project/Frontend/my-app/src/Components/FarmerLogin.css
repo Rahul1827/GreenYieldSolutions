@@ -74,7 +74,7 @@ body {
   justify-content: space-between; /* Ensures content spans the full page */
   flex-direction: column;
   height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Prevent scrolling during transition animations */
+  /* overflow: hidden; Prevent scrolling during transition animations */
 }
 
 /* Main Content Area */
